@@ -13,7 +13,7 @@ public class CameraRotate : MonoBehaviour
     {
         //プレイヤーをplayerに格納
         player = GameObject.Find("ty@Jumping");
-        //offset = transform.position - player.transform.position;
+        offset = transform.position - player.transform.position;
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class CameraRotate : MonoBehaviour
     {
 
         //新しいトランスフォームの値を代入する
-        //transform.position = player.transform.position + offset;
+        transform.position = player.transform.position + offset;
 
         //プレイヤーの向きと同じようにカメラの向きを変更する
         //transform.rotation = player.transform.rotation;
