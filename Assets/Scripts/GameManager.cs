@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject PlayerObj = GameObject.Find("ty@Jumping");
+        GameObject PlayerObj = GameObject.Find("ty@jumping");
         if(PlayerObj == null)
         {
             --PlayerLife;
