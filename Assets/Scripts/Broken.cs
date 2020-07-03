@@ -8,7 +8,9 @@ public class Broken : MonoBehaviour
     {
         if(other.gameObject.tag == "Human")
         {
+            GameObject Human_Obj =  GameObject.Find("ty@Jumping");
             Destroy(gameObject, 0.1f);
+            Destroy(GameObject.Find("ty@Jumping"), 0.1f);
         }
     }
 }

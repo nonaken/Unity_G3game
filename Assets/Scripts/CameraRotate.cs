@@ -19,7 +19,7 @@ public class CameraRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        player = GameObject.Find("ty@Jumping");
         //新しいトランスフォームの値を代入する
         transform.position = player.transform.position + offset;
 
