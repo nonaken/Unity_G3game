@@ -8,12 +8,27 @@ public class GameManager : MonoBehaviour
     public int PlayerLife;
     public GameObject PlayerPrefab;
     public Text textGameOver;
+    public int score;
+    public Text textScore;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerLife = 3;
         textGameOver.enabled = false;
+        score = 0;
+        textScore = GameObject.Find("Score").GetComponent<Text>();
+        SetScoreText(score);
+    }
+    private void SetScoreText(int score)
+    {
+        textScore.text = "Score:" + score.ToString(); 
+    }
+
+    public void AddScoreint(int point)
+    {
+        score += point;
+        SetScoreText(score);
     }
 
     // Update is called once per frame
