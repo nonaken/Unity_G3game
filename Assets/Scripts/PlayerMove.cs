@@ -20,9 +20,9 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //jump_flagがfalseなら
-        if (animator.GetBool("jump_flag") == false)
-        {
+        ////jump_flagがfalseなら
+        //if (animator.GetBool("jump_flag") == false)
+        //{
             //方向転換
             //方向キーのどちらも押されている時
             if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
@@ -80,6 +80,6 @@ public class PlayerMove : MonoBehaviour
                 //歩くアニメーションフラグをfalseにする
                 animator.SetBool("run_flag", false);
             }
-        }
+        //}
     }
 }

@@ -15,6 +15,7 @@ public class Animation_Jumping : MonoBehaviour
         {
             anim.SetBool("jump_flag", true);
         }
+        
         else
         {
             anim.SetBool("jump_flag", false);
