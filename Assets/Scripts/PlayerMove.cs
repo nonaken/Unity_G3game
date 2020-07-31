@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         ////jump_flagがfalseなら
         //if (animator.GetBool("jump_flag") == false)
         //{

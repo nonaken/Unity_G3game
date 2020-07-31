@@ -10,7 +10,7 @@ public class CameraRotate : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.player = GameObject.Find("ty@Jumping");
+        player = GameObject.Find("ty@Jumping");
         offset = transform.position - player.transform.position;
     }
 

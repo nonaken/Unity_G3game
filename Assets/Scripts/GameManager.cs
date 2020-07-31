@@ -9,19 +9,30 @@ public class GameManager : MonoBehaviour
     public int PlayerLife;
     public GameObject PlayerPrefab;
     public Text textGameOver;
+    public Text textGameClear;
+    public bool textGameClear_flag;
     private int score;
     private float leftTime;
     private Text textScore;
     private Text textLife;
     private Text textTimer;
     private bool inGame;
-    
+
+    public Vector3 Player;
+
+    GameObject unitychan; //Unityちゃんそのものが入る変数
+
+    GameClear script;
 
     // Start is called before the first frame update
     void Start()
     {
+        unitychan = GameObject.Find("GameClear"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
+        script = unitychan.GetComponent<GameClear>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
+
         PlayerLife = 3;
         textGameOver.enabled = false;
+        textGameClear.enabled = false;
         score = 0;
         leftTime = 30f;
         textScore = GameObject.Find("Score").GetComponent<Text>();
@@ -56,9 +67,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("stage1");
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
+        Player = GameObject.Find("ty@Jumping").transform.position;
         if (inGame)
         {
             leftTime -= Time.deltaTime;
@@ -68,23 +82,39 @@ public class GameManager : MonoBehaviour
                 textGameOver.enabled = true;
                 inGame = false;
             }
-            
-            GameObject PlayerObj = GameObject.Find("ty@Jumping");
-            if (PlayerObj == null)
+
+            if(textGameClear_flag == true)
             {
-                --PlayerLife;
+                textGameClear.enabled = true;
+                inGame = false;
+            }
+
+            GameObject PlayerObj = GameObject.Find("ty@Jumping");
+
+            //if (PlayerObj == null)
+            //{
+            //    --PlayerLife;
+            //}
                 SetLifeText(PlayerLife);
-                if (PlayerLife > 0)
-                {
-                    GameObject newPlayer = Instantiate(PlayerPrefab);
-                    newPlayer.name = PlayerPrefab.name;
-                }
-                else
+            //if (PlayerLife > 0)
+            //{
+            //    GameObject newPlayer = Instantiate(PlayerPrefab);
+            //    newPlayer.name = PlayerPrefab.name;
+            //}
+
+                if (PlayerLife <= 0)
                 {
                     PlayerLife = 0;
                     textGameOver.enabled = true;
                     inGame = false;
                 }
+            //}
+            if (Player.y <= -100)
+            {
+                --PlayerLife;
+                GameObject newPlayer = Instantiate(PlayerPrefab);
+                newPlayer.name = PlayerPrefab.name;
+                Destroy(GameObject.Find("ty@Jumping"));
             }
         }
     }
