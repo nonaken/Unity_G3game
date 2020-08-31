@@ -20,15 +20,15 @@ public class GameManager : MonoBehaviour
 
     public Vector3 Player;
 
-    GameObject unitychan; //Unityちゃんそのものが入る変数
+    GameObject Playerdata; //Unityちゃんそのものが入る変数
 
-    GameClear script;
+    Broken BrokenScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        unitychan = GameObject.Find("GameClear"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
-        script = unitychan.GetComponent<GameClear>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
+        Playerdata = GameObject.Find("Wall"); //PlayerLifeを使用しているオブジェクトの名前から取得して変数に格納する
+        BrokenScript = Playerdata.GetComponent<Broken>(); //Playerdataの中にあるBrokenを取得して変数に格納する
 
         PlayerLife = 3;
         textGameOver.enabled = false;
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         Player = GameObject.Find("ty@Jumping").transform.position;
         if (inGame)
         {
@@ -109,12 +109,17 @@ public class GameManager : MonoBehaviour
                     inGame = false;
                 }
             //}
-            if (Player.y <= -100)
+            if (Player.y <= -30)
             {
                 --PlayerLife;
                 GameObject newPlayer = Instantiate(PlayerPrefab);
                 newPlayer.name = PlayerPrefab.name;
                 Destroy(GameObject.Find("ty@Jumping"));
+            }
+            if (BrokenScript.Collisionflag == true)
+            {
+                --PlayerLife;
+                BrokenScript.Collisionflag = false;
             }
         }
     }

@@ -1253,6 +1253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbfa0faf894c1e42b150fe584f85b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerPrefab: {fileID: 0}
+  Collisionflag: 0
 --- !u!1 &993737439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,6 +2081,9 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 298988048124892248, guid: 7e357b91fed30bc4db332274879b9fc4,
     type: 3}
   textGameOver: {fileID: 1948825745}
+  textGameClear: {fileID: 0}
+  textGameClear_flag: 0
+  Player: {x: 0, y: 0, z: 0}
 --- !u!1 &2046973471
 GameObject:
   m_ObjectHideFlags: 0

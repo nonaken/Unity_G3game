@@ -219,6 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98079951361edf741835fe21ee3bc02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 8296172669355361276}
+  key: 32
+  toggle: {fileID: 0}
+  toggleLabel: {fileID: 0}
 --- !u!114 &7515407057618597199
 MonoBehaviour:
   m_ObjectHideFlags: 0
