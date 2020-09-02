@@ -9,21 +9,19 @@ public class Animation_Jumping : MonoBehaviour
     // Rigidbod コンポーネントを格納する変数
     public Rigidbody rb;
     // ジャンプ力：Rigidbod コンポーネントに加える力を格納する変数
-    private float jumpPower;
-    // ジャンプ：KeyCode を格納する変数
-    public KeyCode key;
-    // UI Toggle コンポーネントを格納する変数
-    public Toggle toggle;
-    // UI Text コンポーネントを格納する変数
-    public Text toggleLabel;
+    private float jumpPower = 8f;
     // ジャンプ有効フラグ
-    private bool jump;
+    public bool jump = true;
+
+    private bool floor;
+
+    private Animator animator;
 
     // ゲーム開始時の処理
     void Start()
     {
-        // 関数 ToggleChange() を実行
-        ToggleChange();
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();//  rbにRigidbodyの値を代入する
     }
 
     // ゲーム実行中に一定タイミングで実行される処理
@@ -35,6 +33,8 @@ public class Animation_Jumping : MonoBehaviour
             // Rigidbod コンポーネントに力を加える
             //  ForceMode.Impulse で瞬時に衝撃力を適用
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+
+            //anim.transform.position += jumpPower;
             // ジャンプ有効フラグを false に設定
             jump = false;
         }
@@ -43,18 +43,17 @@ public class Animation_Jumping : MonoBehaviour
     // ゲーム実行中に毎フレーム実行される処理
     void Update()
     {
-        //Animator anim = GetComponent<Animator>();
 
-        // 何かキーが押されている
-        //if (Input.GetKey("space"))
-        //{
-        //    anim.SetBool("jump_flag", true);
-        //}
+        //何かキーが押されている
+        if (Input.GetKey("space"))
+        {
+            animator.SetBool("jump_flag", true);
+        }
 
-        //else
-        //{
-        //    anim.SetBool("jump_flag", false);
-        //}
+        else
+        {
+            animator.SetBool("jump_flag", false);
+        }
 
         // オブジェクトのジャンプ高さの抑制
         // Rigidbod コンポーネントのY座標が 1.2f 以下であれば
@@ -64,33 +63,23 @@ public class Animation_Jumping : MonoBehaviour
             // かつUI Toggle コンポーネントの isOn が false であれば
             // または
             // 変数 key に格納したキー入力があれば、
-            // かつUI Toggle コンポーネントの isOn が true であれば
-            if ((Input.GetKey(key) && !toggle.isOn) || (Input.GetKeyDown(key) && toggle.isOn))
+            if (floor == true)
             {
-                // ジャンプ有効フラグを true に設定
-                jump = true;
+                // かつUI Toggle コンポーネントの isOn が true であれば
+                if (Input.GetKey("space"))// && !toggle.isOn) //|| (Input.GetKeyDown("space") && toggle.isOn))
+                {
+                    floor = false;
+                    // ジャンプ有効フラグを true に設定
+                    jump = true;
+                }
             }
         }
     }
-
-    // UI Toggle コンポーネントの 値が変更された場合に実行する処理
-    public void ToggleChange()
+    void OnCollisionEnter(Collision other)//  地面に触れた時の処理
     {
-        // UI Toggle コンポーネントの isOn が false であれば
-        if (!toggle.isOn)
+        if (other.gameObject.tag == "floor")//  もしGroundというタグがついたオブジェクトに触れたら、
         {
-            // Text コンポーネントの text に "GetKey" を格納
-            toggleLabel.text = "GetKey:キー押時間でジャンプ力調整";
-            // ジャンプ力の変数 jumpPower に 1f を入力
-            jumpPower = 1f;
-        }
-        // UI Toggle コンポーネントの isOn が true であれば
-        if (toggle.isOn)
-        {
-            // Text コンポーネントの text に "GetKeyDown" を格納
-            toggleLabel.text = "GetKeyDown:ジャンプ力一定";
-            // ジャンプ力の変数 jumpPower に 8f を入力
-            jumpPower = 8f;
+            floor = true;//  Groundedをtrueにする
         }
     }
 }
