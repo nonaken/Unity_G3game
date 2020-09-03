@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerPrefab;
     public Text textGameOver;
     public Text textGameClear;
-    public bool textGameClear_flag;
     private int score;
     private float leftTime;
     private Text textScore;
@@ -20,15 +19,20 @@ public class GameManager : MonoBehaviour
 
     public Vector3 Player;
 
-    GameObject Playerdata; //Unityちゃんそのものが入る変数
-
+    GameObject PlayerObject; //Unityちゃんそのものが入る変数
     Broken BrokenScript;
+
+    GameObject ClearObject;
+    GameClear GameClearScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        Playerdata = GameObject.Find("Wall"); //PlayerLifeを使用しているオブジェクトの名前から取得して変数に格納する
-        BrokenScript = Playerdata.GetComponent<Broken>(); //Playerdataの中にあるBrokenを取得して変数に格納する
+        PlayerObject = GameObject.Find("Wall"); //PlayerLifeを使用しているオブジェクトの名前から取得して変数に格納する
+        BrokenScript = PlayerObject.GetComponent<Broken>(); //PlayerObjectの中にあるBrokenを取得して変数に格納する
+
+        ClearObject = GameObject.Find("ClearObject");
+        GameClearScript = ClearObject.GetComponent<GameClear>();
 
         PlayerLife = 3;
         textGameOver.enabled = false;
@@ -83,7 +87,7 @@ public class GameManager : MonoBehaviour
                 inGame = false;
             }
 
-            if(textGameClear_flag == true)
+            if(GameClearScript.textGameClear_flag == true)
             {
                 textGameClear.enabled = true;
                 inGame = false;
