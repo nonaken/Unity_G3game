@@ -44,42 +44,46 @@ public class Animation_Jumping : MonoBehaviour
     void Update()
     {
 
-        //何かキーが押されている
-        if (Input.GetKey("space"))
-        {
-            animator.SetBool("jump_flag", true);
-        }
-
-        else
-        {
-            animator.SetBool("jump_flag", false);
-        }
+        
 
         // オブジェクトのジャンプ高さの抑制
         // Rigidbod コンポーネントのY座標が 1.2f 以下であれば
         if (rb.position.y < 1.2f)
         {
-            // 変数 key に格納したキーを押し続けている間、
-            // かつUI Toggle コンポーネントの isOn が false であれば
-            // または
-            // 変数 key に格納したキー入力があれば、
+           //floorフラグがtrueのとき
             if (floor == true)
             {
-                // かつUI Toggle コンポーネントの isOn が true であれば
-                if (Input.GetKey("space"))// && !toggle.isOn) //|| (Input.GetKeyDown("space") && toggle.isOn))
-                {
-                    floor = false;
-                    // ジャンプ有効フラグを true に設定
-                    jump = true;
-                }
+                // スペースキーを押したとき
+                //if (Input.GetKey("space"))// && !toggle.isOn) //|| (Input.GetKeyDown("space") && toggle.isOn))
+                //{
+                    //何かキーが押されている
+                    if (Input.GetKey("space"))
+                    {
+                        animator.SetBool("jump_flag", true);
+                        floor = false;
+                        // ジャンプ有効フラグを true に設定
+                        jump = true;
+                    }
+
+                    else
+                    {
+                        animator.SetBool("jump_flag", false);
+                    }
+                    
+                    
+                //}
             }
         }
     }
     void OnCollisionEnter(Collision other)//  地面に触れた時の処理
     {
-        if (other.gameObject.tag == "floor")//  もしGroundというタグがついたオブジェクトに触れたら、
+        if (other.gameObject.tag == "floor")//  もしfloorというタグがついたオブジェクトに触れたら、
         {
-            floor = true;//  Groundedをtrueにする
+            floor = true;//  floorをtrueにする
+        }
+        else
+        {
+            floor = false;
         }
     }
 }
