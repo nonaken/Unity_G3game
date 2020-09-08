@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public Vector3 Player;
 
-    GameObject PlayerObject; //Unityちゃんそのものが入る変数
+    GameObject PlayerObject;
     Broken BrokenScript;
 
     GameObject ClearObject;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerObject = GameObject.Find("Wall"); //PlayerLifeを使用しているオブジェクトの名前から取得して変数に格納する
+        PlayerObject = GameObject.FindWithTag("Obstacle"); //PlayerLifeを使用しているオブジェクトの名前から取得して変数に格納する
         BrokenScript = PlayerObject.GetComponent<Broken>(); //PlayerObjectの中にあるBrokenを取得して変数に格納する
 
         ClearObject = GameObject.Find("ClearObject");
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
                 inGame = false;
             }
 
-            GameObject PlayerObj = GameObject.Find("ty@Jumping");
+            //GameObject PlayerObj = GameObject.Find("ty@Jumping");
 
             //if (PlayerObj == null)
             //{

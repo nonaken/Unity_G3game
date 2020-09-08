@@ -4,17 +4,20 @@ using UnityEngine;
 using UnityEngine.AI;
 public class MavMashAgentScript : MonoBehaviour
 {
-    [SerializeField]
-    Transform target;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;          //☆追加
+    public GameObject target;           //☆追加  目的地
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
     }
+
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
+        target = GameObject.Find("ty@Jumping");
+        //目的地を設定してあげる
+        agent.SetDestination(target.transform.position);//☆追加
     }
 }

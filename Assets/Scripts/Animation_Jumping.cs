@@ -24,6 +24,8 @@ public class Animation_Jumping : MonoBehaviour
         rb = GetComponent<Rigidbody>();//  rbにRigidbodyの値を代入する
     }
 
+
+
     // ゲーム実行中に一定タイミングで実行される処理
     private void FixedUpdate()
     {

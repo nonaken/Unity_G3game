@@ -18,10 +18,10 @@ public class Broken : MonoBehaviour
         {
             //GameObject Human_Obj =  GameObject.Find("ty@Jumping");
             //GameManager G1 = PlayerPrefab.GetComponent<GameManager>();
-           
+            Collisionflag = true;
             Destroy(gameObject, 0.1f);
             //++PlayerLife_count;
-            Collisionflag = true;
+            
 
 
             //GameObject newPlayer = Instantiate(PlayerPrefab);

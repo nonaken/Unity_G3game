@@ -9,6 +9,7 @@ TagManager:
   - Chara_Position
   - Human
   - floor
+  - Obstacle
   layers:
   - Default
   - TransparentFX
