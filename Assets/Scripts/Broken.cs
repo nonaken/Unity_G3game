@@ -4,29 +4,21 @@ using UnityEngine;
 
 public class Broken : MonoBehaviour
 {
-    public GameObject PlayerPrefab;
-    public bool Collisionflag;
+    public bool Collisionflag; //プレイヤーが衝突しているか判断するためのbool型
 
     void Start()
     {
         Collisionflag = false;
     }
    
+   　//衝突処理
     void OnCollisionEnter(Collision other)
     {
+        //Humanのタグが付いたオブジェクトが触れたら
         if(other.gameObject.tag == "Human")
         {
-            //GameObject Human_Obj =  GameObject.Find("ty@Jumping");
-            //GameManager G1 = PlayerPrefab.GetComponent<GameManager>();
+            Destroy(gameObject, 0.1f); //触れた障害物のオブジェクトを消す
             Collisionflag = true;
-            Destroy(gameObject, 0.1f);
-            //++PlayerLife_count;
-            
-
-
-            //GameObject newPlayer = Instantiate(PlayerPrefab);
-            //newPlayer.name = PlayerPrefab.name;
-            //Destroy(GameObject.Find("ty@Jumping"));
         }
         else {
             Collisionflag = false;

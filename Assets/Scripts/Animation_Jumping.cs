@@ -13,14 +13,16 @@ public class Animation_Jumping : MonoBehaviour
     // ジャンプ有効フラグ
     public bool jump = true;
 
+    //床に触れているか判断するためのbool型
     private bool floor;
 
+    //Animatorを読みこむ
     private Animator animator;
 
     // ゲーム開始時の処理
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();　
         rb = GetComponent<Rigidbody>();//  rbにRigidbodyの値を代入する
     }
 
@@ -49,31 +51,25 @@ public class Animation_Jumping : MonoBehaviour
         
 
         // オブジェクトのジャンプ高さの抑制
-        // Rigidbod コンポーネントのY座標が 1.2f 以下であれば
+        // Rigidbody コンポーネントのY座標が 1.2f 以下であれば
         if (rb.position.y < 1.2f)
         {
            //floorフラグがtrueのとき
             if (floor == true)
             {
-                // スペースキーを押したとき
-                //if (Input.GetKey("space"))// && !toggle.isOn) //|| (Input.GetKeyDown("space") && toggle.isOn))
-                //{
-                    //何かキーが押されている
-                    if (Input.GetKey("space"))
-                    {
-                        animator.SetBool("jump_flag", true);
-                        floor = false;
-                        // ジャンプ有効フラグを true に設定
-                        jump = true;
-                    }
+                //スペースキーが押されている
+                if (Input.GetKey("space"))
+                {
+                   animator.SetBool("jump_flag", true);
+                   floor = false;
+                    // ジャンプ有効フラグを true に設定
+                   jump = true;
+                }
 
-                    else
-                    {
-                        animator.SetBool("jump_flag", false);
-                    }
-                    
-                    
-                //}
+                else
+                {
+                   animator.SetBool("jump_flag", false);
+                }
             }
         }
     }
@@ -85,23 +81,7 @@ public class Animation_Jumping : MonoBehaviour
         }
         else
         {
-            floor = false;
+            floor = false;//  floorをfasleにする
         }
     }
 }
-    //void Update()
-    //{
-    //    Animator anim = GetComponent<Animator>();
-
-    //    // 何かキーが押されている
-    //    if (Input.GetKey("space"))
-    //    {
-    //        anim.SetBool("jump_flag", true);
-    //    }
-
-    //    else
-    //    {
-    //        anim.SetBool("jump_flag", false);
-    //    }
-
-    //}

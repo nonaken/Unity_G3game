@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class GameClear : MonoBehaviour
 {
-    public bool textGameClear_flag;
+    public bool textGameClear_flag; //ゲームクリアか判断するためのbool型
     // Start is called before the first frame update
     void Start()
     {
-        textGameClear_flag = false;
+        textGameClear_flag = false; //ゲームクリアではない
     }
 
     // Update is called once per frame
@@ -20,10 +20,10 @@ public class GameClear : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        //Humanのタグが付いたオブジェクトが触れたら
         if (other.gameObject.tag == "Human")
         {
-            textGameClear_flag = true;
-            //Debug.Log(other.gameObject.name);
+            textGameClear_flag = true; //ゲームクリア
         }
     }
 }

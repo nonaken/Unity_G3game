@@ -10,18 +10,18 @@ public class CameraRotate : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        player = GameObject.Find("ty@Jumping");
-        offset = transform.position - player.transform.position;
+        player = GameObject.Find("ty@Jumping");     //プレイヤーのオブジェクトを読みこむ
+        offset = transform.position - player.transform.position;　//カメラの座標からプレイヤー座標を引く
     }
 
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("ty@Jumping");
+        player = GameObject.Find("ty@Jumping");     //プレイヤーのオブジェクトを読みこむ
 
         //新しいトランスフォームの値を代入する
-        transform.position = player.transform.position + offset;
-        
+        transform.position = player.transform.position + offset;    //カメラの座標をプレイヤー座標 + カメラの座標からプレイヤー座標を引いた座標にする
+
         //プレイヤーの向きと同じようにカメラの向きを変更する
         //transform.rotation = player.transform.rotation;
 
