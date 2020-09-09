@@ -11,6 +11,8 @@ public class MavMashAgentScript : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        
     }
 
     // Update is called once per frame
@@ -18,6 +20,7 @@ public class MavMashAgentScript : MonoBehaviour
     {
         target = GameObject.Find("ty@Jumping");
         //目的地を設定してあげる
-        agent.SetDestination(target.transform.position);//☆追加
+        agent.SetDestination(target.transform.position);
+
     }
 }

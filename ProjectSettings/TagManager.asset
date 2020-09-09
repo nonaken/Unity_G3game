@@ -10,6 +10,7 @@ TagManager:
   - Human
   - floor
   - Obstacle
+  - Heel
   layers:
   - Default
   - TransparentFX

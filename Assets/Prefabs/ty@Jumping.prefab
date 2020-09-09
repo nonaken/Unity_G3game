@@ -220,10 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8296172669355361276}
-  jumpPower: 0
-  key: 32
-  toggle: {fileID: 0}
-  toggleLabel: {fileID: 0}
   jump: 0
 --- !u!114 &7515407057618597199
 MonoBehaviour:

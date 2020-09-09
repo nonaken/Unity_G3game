@@ -15,12 +15,15 @@ public class GameManager : MonoBehaviour
     private Text textScore;     //スコアを文字で表示するための変数
     private Text textLife;      //ライフを文字で表示するための変数
     private Text textTimer;     //制限時間を文字で表示するための変数
-    private bool inGame;        //ゲーム中か判断するためのbool型
+    public bool inGame;        //ゲーム中か判断するためのbool型
 
     public Vector3 Player;      //プレイヤーの座標を取得するため
 
-    GameObject[] WallObject;       //障害物のオブジェクト用配列
+    GameObject[] ObstacleObject;       //障害物のオブジェクト用配列
     Broken BrokenScript_Wall, BrokenScript_Pipe;    //障害物に割り当てられているBrokenスクリプトを取得するための変数
+
+    GameObject HeelObject;
+    Broken BrokenScript_Heel;
 
     GameObject ClearObject;     //textGameClear_flagを使用するための変数
     GameClear GameClearScript;  //クリア判定する際の衝突検知用に割り当てられているGameClearスクリプトを取得するための変数
@@ -28,10 +31,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WallObject = GameObject.FindGameObjectsWithTag("Obstacle"); //Collisionflagを使用するため、Obstacleの付いたタグからBrokenスクリプトを取得して変数に格納する
 
-        BrokenScript_Wall = WallObject[0].GetComponent<Broken>(); //Obstacleタグの中にあるBrokenを取得して変数に格納する
-        BrokenScript_Pipe = WallObject[1].GetComponent<Broken>(); //Obstacleタグの中にあるBrokenを取得して変数に格納する
+        ObstacleObject = GameObject.FindGameObjectsWithTag("Obstacle"); //Collisionflagを使用するため、Obstacleの付いたタグからBrokenスクリプトを取得して変数に格納する
+        HeelObject = GameObject.FindWithTag("Heel");                    //Collisionflagを使用するため、Heelの付いたタグからBrokenスクリプトを取得して変数に格納する
+
+        BrokenScript_Wall = ObstacleObject[0].GetComponent<Broken>(); //Obstacleタグの中にあるBrokenを取得して変数に格納する
+        BrokenScript_Pipe = ObstacleObject[1].GetComponent<Broken>(); //Obstacleタグの中にあるBrokenを取得して変数に格納する
+        BrokenScript_Heel = HeelObject.GetComponent<Broken>();        //Heelタグの中にあるBrokenを取得して変数に格納する
         
 
         ClearObject = GameObject.Find("ClearObject");  //textGameClear_flagを使用するため、ClearObjectと名のついたオブジェクトからGameClearスクリプトを取得して変数に格納する
@@ -133,6 +139,13 @@ public class GameManager : MonoBehaviour
             {
                 --PlayerLife;
                 BrokenScript_Pipe.Collisionflag = false;
+            }
+
+            //回復アイテムに触れたら
+            if (BrokenScript_Heel.Collisionflag == true)
+            {
+                ++PlayerLife;
+                BrokenScript_Heel.Collisionflag = false;
             }
         }
     }
