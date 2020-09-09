@@ -5,8 +5,10 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - sound01: {fileID: 8300000, guid: 64bf0d81c8df4394dba551e9a5c2f0be, type: 3}
-  - sound02: {instanceID: 0}
-  - sound03: {instanceID: 0}
+  - sound02: {fileID: 8300000, guid: 5d310ca9f5a4c8f458b3e3ed9bc0f3d0, type: 3}
+  - sound03: {fileID: 8300000, guid: d66a58bf275ddcd4ea17af2d06318072, type: 3}
+  - slider: {fileID: 4646068990277917060, guid: ca39ee1083a1adc41bbbe04b26e7c917,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
