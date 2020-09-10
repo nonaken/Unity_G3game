@@ -7,9 +7,6 @@ public class Sound : MonoBehaviour
 {
     public AudioSource audio;
     public AudioClip sound01;
-    public AudioClip sound02;
-    public AudioClip sound03;
-
 
     GameObject SoundObject;       //障害物のオブジェクト用配列
     GameManager GameManagerScript_Sound;  //障害物に割り当てられているBrokenスクリプトを取得するための変数

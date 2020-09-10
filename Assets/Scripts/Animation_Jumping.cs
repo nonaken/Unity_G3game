@@ -14,7 +14,7 @@ public class Animation_Jumping : MonoBehaviour
     public bool jump = true;
 
     //床に触れているか判断するためのbool型
-    private bool floor;
+    public bool floor;
 
     //Animatorを読みこむ
     private Animator animator;
@@ -52,8 +52,8 @@ public class Animation_Jumping : MonoBehaviour
 
         // オブジェクトのジャンプ高さの抑制
         // Rigidbody コンポーネントのY座標が 1.2f 以下であれば
-        if (rb.position.y < 1.2f)
-        {
+        //if (rb.position.y < 1.2f)
+        //{
            //floorフラグがtrueのとき
             if (floor == true)
             {
@@ -70,7 +70,7 @@ public class Animation_Jumping : MonoBehaviour
                 {
                    animator.SetBool("jump_flag", false);
                 }
-            }
+            //}
         }
     }
     void OnCollisionEnter(Collision other)//  地面に触れた時の処理
