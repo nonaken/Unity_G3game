@@ -26,8 +26,8 @@ public class VolumeChange : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
+   // private void Update()
+    //{
         
         //for (int i = 0; i < DefinePause.ImageNumber; i++)
         //{
@@ -37,9 +37,9 @@ public class VolumeChange : MonoBehaviour
         //        slider = GameObject.Find("Slider").GetComponent<Slider>();
         //    }
         //}
-    }
+    //}
     //スライダーで音量調整
-    public void OnValueChanged()
+    public void  FixedUpdate()
     {
         SoundScript.audio.GetComponent<AudioSource>().volume = slider.GetComponent<Slider>().normalizedValue;
     }

@@ -103,14 +103,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("stage1");
     }
-
     
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         //プレイヤーの座標を取得
         Player = GameObject.Find("ty@Jumping").transform.position;
+        //タイトル画面のとき
         if (inGame)
         {
             //制限時間から経過時間を引く
