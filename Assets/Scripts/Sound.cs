@@ -15,7 +15,6 @@ public class Sound : MonoBehaviour
     {
         audio = gameObject.AddComponent<AudioSource>();
         SoundObject = GameObject.Find("GameObject"); //InGameを使用するため、GameObjectからBrokenスクリプトを取得して変数に格納する
-
         GameManagerScript_Sound = SoundObject.GetComponent<GameManager>(); //GameObjectにあるBrokenを取得して変数に格納する
         audio.clip = sound01;
         audio.volume = 0.1f;
