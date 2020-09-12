@@ -9,7 +9,7 @@ public class Animation_Jumping : MonoBehaviour
     // Rigidbod コンポーネントを格納する変数
     public Rigidbody rb;
     // ジャンプ力：Rigidbod コンポーネントに加える力を格納する変数
-    private float jumpPower = 8f;
+    private float jumpPower = 5f;
     // ジャンプ有効フラグ
     public bool jump = true;
 

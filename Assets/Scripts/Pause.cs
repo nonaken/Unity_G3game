@@ -14,6 +14,7 @@ public class Pause : MonoBehaviour
     [SerializeField]
     public GameObject[] pauseUI;    //ポーズした時に表示するUI
     public Image[] image;           //ポーズした時に表示するUIのImage配列(enabledを使用するため)
+    public Slider slider;           //スライダーを表示するため
 
     private void Start()
     {
@@ -21,29 +22,32 @@ public class Pause : MonoBehaviour
         {
             image[i].enabled = false;
         }
+        slider.enabled = false;     //スライダーを非表示にする
     }
     // Update is called once per frame
     void Update()
     {
-        //
+        //エスケープキーを押したら
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             for (int i = 0; i < DefinePause.ImageNumber; i++)
             {
                 //　ポーズUIのアクティブ、非アクティブを切り替え
                 pauseUI[i].SetActive(!pauseUI[i].activeSelf);
-
+                slider.gameObject.SetActive(!slider.gameObject.activeSelf);
                 //　ポーズUIが表示されてる時は停止
                 if (pauseUI[i].activeSelf == true)
                 {
 
                     image[i].enabled = true;
+                    slider.enabled = true;
 
                     Time.timeScale = 0f;
                 }
                 //　ポーズUIが表示されてなければ通常通り進行
                 else
                 {
+                    slider.enabled = false;
                     Time.timeScale = 1f;
                 }
 

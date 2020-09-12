@@ -36,17 +36,18 @@ public class PlayerMove : MonoBehaviour
             else if (Input.GetKey(KeyCode.UpArrow))
             {
                 //キャラクターの向きを上方向にする
-                transform.rotation = Quaternion.AngleAxis(0, new Vector3(1, 0, 0));
+                transform.rotation = Quaternion.AngleAxis(0, new Vector3(1 * Time.deltaTime, 0, 0));
                 //歩くアニメーションフラグをtrueにする
                 animator.SetBool("run_flag", true);
                 //キャラクターの移動
                 transform.position += transform.forward * speed * Time.deltaTime;
             }
 
+            //下矢印キーを押している間
             else if(Input.GetKey(KeyCode.DownArrow))
             {
-                //キャラクターの向きを上方向にする
-                transform.rotation = Quaternion.AngleAxis(180, new Vector3(0, 1, 0));
+                //キャラクターの向きを下方向にする
+                transform.rotation = Quaternion.AngleAxis(180, new Vector3(0, 1 * Time.deltaTime, 0));
                 //歩くアニメーションフラグをtrueにする
                 animator.SetBool("run_flag", true);
                 //キャラクターの移動
@@ -57,7 +58,7 @@ public class PlayerMove : MonoBehaviour
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 //キャラクターの向きを左方向にする
-                transform.rotation = Quaternion.AngleAxis(-90, new Vector3(0, 1, 0));
+                transform.rotation = Quaternion.AngleAxis(-90, new Vector3(0, 1 * Time.deltaTime, 0));
                 //transform.Rotate(0, rotateSpeed * -1, 0);
                 //歩くアニメーションフラグをtrueにする
                 animator.SetBool("run_flag", true);
@@ -69,7 +70,7 @@ public class PlayerMove : MonoBehaviour
             else if (Input.GetKey(KeyCode.RightArrow))
             {  
                 //キャラクターの向きを右方向にする
-                transform.rotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                transform.rotation = Quaternion.AngleAxis(90, new Vector3(0, 1 * Time.deltaTime, 0));
                 //歩くアニメーションフラグをtrueにする
                 animator.SetBool("run_flag", true);
                 //キャラクターの移動
