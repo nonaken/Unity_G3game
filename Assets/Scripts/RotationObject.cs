@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotationObject : MonoBehaviour
 {
     //public float rotAngle = 10.0f;
-    void FixedUpdate()
+    void Update()
     { 
         transform.Rotate(0f,1f, 0f);
     }
