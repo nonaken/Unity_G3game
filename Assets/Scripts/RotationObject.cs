@@ -7,6 +7,6 @@ public class RotationObject : MonoBehaviour
     //public float rotAngle = 10.0f;
     void Update()
     { 
-        transform.Rotate(0f,1f, 0f);
+        transform.Rotate(0f,60f * Time.deltaTime, 0f);
     }
 }

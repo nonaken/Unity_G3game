@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public static class DefinePause
 {
     // static readonlyの場合
-    public static readonly int ImageNumber = 3;      //障害物のオブジェクト数(マクロ定義のようなもの)
+    public static readonly int ImageNumber = 2;      //障害物のオブジェクト数(マクロ定義のようなもの)
 }
 
 public class Pause : MonoBehaviour
@@ -25,16 +25,18 @@ public class Pause : MonoBehaviour
         slider.enabled = false;     //スライダーを非表示にする
     }
     // Update is called once per frame
-    void Update()
+    //void Update()
+    public void PauseImage()
     {
-        //エスケープキーを押したら
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            for (int i = 0; i < DefinePause.ImageNumber; i++)
+        slider.gameObject.SetActive(!slider.gameObject.activeSelf);
+        ////エスケープキーを押したら
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        for (int i = 0; i < DefinePause.ImageNumber; i++)
             {
                 //　ポーズUIのアクティブ、非アクティブを切り替え
                 pauseUI[i].SetActive(!pauseUI[i].activeSelf);
-                slider.gameObject.SetActive(!slider.gameObject.activeSelf);
+                
                 //　ポーズUIが表示されてる時は停止
                 if (pauseUI[i].activeSelf == true)
                 {
@@ -51,7 +53,7 @@ public class Pause : MonoBehaviour
                     Time.timeScale = 1f;
                 }
 
-            }
+           // }
 
 
         }
