@@ -31,14 +31,14 @@ public class CameraRotate : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             //プレイヤーを中心に-2f度回転
-            transform.RotateAround(player.transform.position, Vector3.up, -2f);
+            transform.RotateAround(player.transform.position, Vector3.up, -100f * Time.deltaTime);
             offset = transform.position - player.transform.position;
         }
         //Dが押されている時
         else if (Input.GetKey(KeyCode.D))
         {
             //プレイヤーを中心に2f度回転
-            transform.RotateAround(player.transform.position, Vector3.up, 2f);
+            transform.RotateAround(player.transform.position, Vector3.up, 100f * Time.deltaTime);
             offset = transform.position - player.transform.position;
         }
 

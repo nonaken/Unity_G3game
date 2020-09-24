@@ -46,29 +46,32 @@ public class Animation_Jumping : MonoBehaviour
     void Update()
     {
 
-        
-
         // オブジェクトのジャンプ高さの抑制
         // Rigidbody コンポーネントのY座標が 1.2f 以下であれば
         //if (rb.position.y < 1.2f)
         //{
-           //floorフラグがtrueのとき
-            if (floor == true)
+        //}
+        //floorフラグがtrueのとき
+        if (floor == true)
+        {
+            //スペースキーが押されている
+            if (Input.GetKeyDown("space"))
             {
-                //スペースキーが押されている
-                if (Input.GetKey("space"))
-                {
-                   animator.SetBool("jump_flag", true);
-                   floor = false;
-                    // ジャンプ有効フラグを true に設定
-                   jump = true;
-                }
+                animator.SetBool("jump_flag", true);
+                floor = false;
+                // ジャンプ有効フラグを true に設定
+                jump = true;
+            }
 
-                else
-                {
-                   animator.SetBool("jump_flag", false);
-                }
-            //}
+            else
+            {
+                animator.SetBool("jump_flag", false);
+             
+            }
+        }
+        else
+        {
+            animator.SetBool("fall_flag", true);
         }
     }
     void OnCollisionEnter(Collision other)//  地面に触れた時の処理
@@ -76,6 +79,7 @@ public class Animation_Jumping : MonoBehaviour
         if (other.gameObject.tag == "floor")//  もしfloorというタグがついたオブジェクトに触れたら、
         {
             floor = true;//  floorをtrueにする
+            animator.SetBool("fall_flag", false);
         }
         else
         {

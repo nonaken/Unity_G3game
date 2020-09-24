@@ -1644,7 +1644,7 @@ GameObject:
   - component: {fileID: 209574950}
   m_Layer: 0
   m_Name: ClearObject
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5093,6 +5093,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9bf07121db191094aa8381ef67016a19, type: 3}
       propertyPath: m_TagString
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9bf07121db191094aa8381ef67016a19, type: 3}
+      propertyPath: m_TagString
+      value: floor
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bf07121db191094aa8381ef67016a19, type: 3}
       propertyPath: m_LocalScale.x
